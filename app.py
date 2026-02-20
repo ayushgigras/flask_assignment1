@@ -22,6 +22,9 @@ def create_tables():
     with app.app_context():
         db.create_all()
 
+# Create tables at startup (works with both gunicorn and direct python run)
+create_tables()
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -104,5 +107,4 @@ def register():
     return render_template('register.html')
 
 if __name__ == '__main__':
-    create_tables()
     app.run(debug=True)
