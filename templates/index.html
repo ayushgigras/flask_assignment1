@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - AuthApp{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="display-4">Welcome to Flask Auth App</h1>
+    <p class="lead">A simple authentication app with registration validation.</p>
+    <hr class="my-4">
+    {% if session.get('user_name') %}
+    <p>You are logged in as <strong>{{ session['user_name'] }}</strong>.</p>
+    <a class="btn btn-danger btn-lg" href="{{ url_for('logout') }}" role="button">Logout</a>
+    {% else %}
+    <p>Get started by registering or logging in.</p>
+    <a class="btn btn-primary btn-lg me-2" href="{{ url_for('register') }}" role="button">Register</a>
+    <a class="btn btn-secondary btn-lg" href="{{ url_for('login') }}" role="button">Login</a>
+    {% endif %}
+</div>
+{% endblock %}
